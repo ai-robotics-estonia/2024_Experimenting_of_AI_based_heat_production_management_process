@@ -39,14 +39,16 @@ During forecasting (at 3:00 PM), data is read from the table (based on the known
 To ensure the most optimal approach, the operator is provided with three options, allowing the user to define which device is the primary preferred energy source in the system (electric heating, solid fuel heating, or heat pump). Each option was given separate functionality, with the system automatically considering the possibility that the user may also use other devices in the system as auxiliary heating sources.
 
 ![Figure 1. Training method](https://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/training_method.jpg)
-
+*Figure 1. Training method*
 
 ![Figure 2. Timing of energy production and consumption](https://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/energy_production_consumption_timing.png)
+*Figure 2. Timing of energy production and consumption*
 
 ![Figure 3. Target temperature request](https://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/target_temp_request.jpg)
+*Figure 3. Target temperature request*
 
 ![Figure 4. Example of heat pump control](https://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/heat_pump_control.png)
-
+*Figure 4. Example of heat pump control*
 
 ### Technological Results
 During the project, various methods for solving the task were examined. According to the initial plan, the device was to be controlled by learning from the user’s usage patterns. However, this solution relied heavily on immeasurable parameters (sauna usage, randomness of additional heating, variability in the boiler operator's/heating objectives). Since we had previously developed an automation solution for this system based on an industrial controller (FX3U + integrated 7" HMI), we decided to continue using a similar approach for further control, ensuring high reliability and easy debugging for the company's employees. As a result, we achieved an good outcome based on algorithms that forecast energy consumption and take into account the behavior of all users.
@@ -58,7 +60,7 @@ During prototype testing, the solution is functioning, but it still requires ref
 The technical architecture of the solution is shown on Figure 5 below. 
 
 ![Figure 5. Technical architecture](https://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/heat_pump_control.png)
-
+*Figure 5. Technical architecture*
 
 ### User Interface 
 The end user sees the heating demand (the result of the prediction) directly on the screen (HMI). No other intermediate data is displayed to the user.
