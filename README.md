@@ -38,13 +38,14 @@ Data written to the learning table is based on calculations per square meter, de
 During forecasting (at 3:00 PM), data is read from the table (based on the known temperature, cloud cover, and wind for the next day), and the energy consumption for the following day (kWh) is predicted. Based on this, the energy production cycle is scheduled, starting from 3:00 PM the previous day (Figure 2, Figure 3).
 To ensure the most optimal approach, the operator is provided with three options, allowing the user to define which device is the primary preferred energy source in the system (electric heating, solid fuel heating, or heat pump). Each option was given separate functionality, with the system automatically considering the possibility that the user may also use other devices in the system as auxiliary heating sources.
 
-![Figure 1. Training method](ttps://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/training_method.jpg)
+![Figure 1. Training method](https://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/training_method.jpg)
 
-![Figure 2. Timing of energy production and consumption](ttps://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/energy_production_consumption_timing.png)
 
-![Figure 3. Target temperature request](ttps://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/target_temp_request.jpg)
+![Figure 2. Timing of energy production and consumption](https://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/energy_production_consumption_timing.png)
 
-![Figure 4. Example of heat pump control](ttps://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/heat_pump_control.png)
+![Figure 3. Target temperature request](https://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/target_temp_request.jpg)
+
+![Figure 4. Example of heat pump control](https://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/heat_pump_control.png)
 
 
 ### Technological Results
@@ -56,7 +57,7 @@ During prototype testing, the solution is functioning, but it still requires ref
 ### Technical Architecture
 The technical architecture of the solution is shown on Figure 5 below. 
 
-![Figure 5. Technical architecture](ttps://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/heat_pump_control.png)
+![Figure 5. Technical architecture](https://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/heat_pump_control.png)
 
 
 ### User Interface 
