@@ -1,74 +1,69 @@
-*This is a template repository for this organization. Start by replacing the placeholder for the project name with its actual title.*
+# Development of an artificial intelligence-based heat production control process
 
-# [Demonstration Project title]
 
 ## Summary
-| Company Name | [Company](https://website.link) |
+| Company Name | [Mindreks Metall OÜ](https://mindreksmetall.ee/) |
 | :--- | :--- |
-| Development Team Lead Name | [Dr. John Smith](https://profile.link) |
-| Development Team Lead E-mail | [email@example.com](mailto:email@example.com) |
-| Duration of the Demonstration Project | month/year-month/year |
-| Final Report | [Example_report.pdf](https://github.com/ai-robotics-estonia/_project_template_/files/13800685/IC-One-Page-Project-Status-Report-10673_PDF.pdf) |
-
-### Each project has an alternative for documentation
-1. Fill in the [description](#description) directly in the README below *OR*;
-2. make a [custom agreement with the AIRE team](#custom-agreement-with-the-AIRE-team).
+| Development Team Lead Name | Tauri Tätte |
+| Development Team Lead E-mail | [tauri.tatte@ut.ee](mailto:tauri.tatte@ut.ee) |
+| Duration of the Demonstration Project | 09/2024-05/2025 |
+| Final Report | [Final_report_r2.pdf](https://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/Final_report_r2.pdf) |
 
 # Description
 ## Objectives of the Demonstration Project
-*Please describe your project objectives in detail.*
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The aim of the project was to develop an intelligent heat storage system designed for private homes and small consumers, which would allow the building owner to use several methods for heating (electric heating, heat pump, solid fuel boiler) by choosing the appropriate method and time. These functions can also be used alternately and in combination. The given solution can later be scaled for small-scale production along with imported heat pumps. The goal was to create an energy-efficient integrated heat storage system. Currently, a similar solution is completely absent from our market.
 
 ## Activities and Results of the Demonstration Project
 ### Challenge
-*Please describe challenge addressed (i.e, whether and how the initial challenge was changed during the project, for which investment the demonstration project was provided).*
+During the project, several issues were addressed that enable home consumers to use energy in the most cost-effective way.
+- Heating with electricity can often be more cost-effective than using a solid fuel boiler.
+- The energy used for heating should be produced at the cheapest times (Nord Pool).
+- Heating needs must be forecasted in advance and planned accordingly.
+- The system must learn the building’s behavior based on climate changes.
+- The solution must allow for the use of supplementary heating and account for this addition.
+- The system must take solar radiation into account and its effects on the building.
+- The system must consider wind speed and its cooling effect on the building.
+- The system must account for the outside temperature and its cooling effect on the building.
+- The device must operate autonomously (without connectivity).
+- The device could utilize the thermal inertia of the building.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ### Data Sources
-*Please describe which data was used for the technological solution.*  
-- [Source 1],
-- [Source 2],
-- etc... .
+We are adding a few low-cost auxiliary devices (a flow meter for the heating system and return flow temperature sensors) that will enable real-time feedback from the heating inputs in the future application. Additionally, we integrated weather forecast data (from weather.com) and Nord Pool energy prices into the device. From the weather forecast, we included cloud cover data (%), temperature (°C), and wind speed (m/s) at three-hour intervals.
+
 
 ### AI Technologies
-*Please describe and justify the use of selected AI technologies.*
-- [AI technology 1],
-- [AI technology 2],
-- etc... .
+Since the device must take into account the specific characteristics of the building in relation to wind, radiation, and temperature, we addressed this using continuously updated three-dimensional data tables (axes: temperature, wind speed, cloudiness). As there is a linear correlation between the heat transfer (heat loss) and the temperature, we replaced the third dimension of the table (temperature) with a linear function. The table was divided into ranges to ensure that the real-time learning period would not become excessively long (a maximum of 1 year).
+Data written to the learning table is based on calculations per square meter, derived from total daily energy consumption (Figure 1), and is recorded in the table considering radiation and wind speed data. The values in the table are continuously adjusted to reflect the building’s changes over time (the expected device lifespan is up to 30 years).
+During forecasting (at 3:00 PM), data is read from the table (based on the known temperature, cloud cover, and wind for the next day), and the energy consumption for the following day (kWh) is predicted. Based on this, the energy production cycle is scheduled, starting from 3:00 PM the previous day (Figure 2, Figure 3).
+To ensure the most optimal approach, the operator is provided with three options, allowing the user to define which device is the primary preferred energy source in the system (electric heating, solid fuel heating, or heat pump). Each option was given separate functionality, with the system automatically considering the possibility that the user may also use other devices in the system as auxiliary heating sources.
+
+![Figure 1. Training method](ttps://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/training_method.jpg)
+
+![Figure 2. Timing of energy production and consumption](ttps://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/energy_production_consumption_timing.png)
+
+![Figure 3. Target temperature request](ttps://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/target_temp_request.jpg)
+
+![Figure 4. Example of heat pump control](ttps://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/heat_pump_control.png)
+
 
 ### Technological Results
-*Please describe the results of testing and validating the technological solution.*
+During the project, various methods for solving the task were examined. According to the initial plan, the device was to be controlled by learning from the user’s usage patterns. However, this solution relied heavily on immeasurable parameters (sauna usage, randomness of additional heating, variability in the boiler operator's/heating objectives). Since we had previously developed an automation solution for this system based on an industrial controller (FX3U + integrated 7" HMI), we decided to continue using a similar approach for further control, ensuring high reliability and easy debugging for the company's employees. As a result, we achieved an good outcome based on algorithms that forecast energy consumption and take into account the behavior of all users.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+During prototype testing, the solution is functioning, but it still requires refinement regarding the initial configuration of the data table, which we are currently working on. For the control system to operate accurately, the data table must be pre-configured with values based on square meters, but the differences between buildings are quite significant. However, these differences can be addressed by copying from the initial learning data of similar devices.
+
 
 ### Technical Architecture
-*Please describe the technical architecture (e.g, presented graphically, where the technical solution integration with the existing system can also be seen).*
-- [Component 1],
-- [Component 2], 
-- etc... .
+The technical architecture of the solution is shown on Figure 5 below. 
 
-![backend-architecture](https://github.com/ai-robotics-estonia/_project_template_/assets/15941300/6d405b21-3454-4bd3-9de5-d4daad7ac5b7)
+![Figure 5. Technical architecture](ttps://github.com/ai-robotics-estonia/2024_Experimenting_of_AI_based_heat_production_management_process/blob/main/assets/heat_pump_control.png)
 
 
 ### User Interface 
-*Please describe the details about the user interface(i.e, how does the client 'see' the technical result, whether a separate user interface was developed, command line script was developed, was it validated as an experiment, can the results be seen in ERP or are they integrated into work process)*
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The end user sees the heating demand (the result of the prediction) directly on the screen (HMI). No other intermediate data is displayed to the user.
 
 ### Future Potential of the Technical Solution
-*Please describe the potential areas for future use of the technical solution.*
-- [Use case 1],
-- [Use case 2],
-- etc... .
+The sample solution is educational in many ways across different fields, as similar approaches can be used to control various heating systems and energy production solutions, as well as to utilize surplus energy (which may not be practical to sell) or to use electric heating alongside conventional heating (when it is more cost-effective at a given time). The software solution can be reused in multiple scenarios, as the entire heating technology sector is moving toward increasingly optimized solutions. This presents a great opportunity to create cost-effective energy storage systems (using thermal storage) and to develop control solutions based on industrial controllers.
 
 ### Lessons Learned
-*Please describe the lessons learned (i.e. assessment whether the technological solution actually solved the initial challenge).*
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-# Custom agreement with the AIRE team
-*If you have a unique project or specific requirements that don't fit neatly into the Docker file or description template options, we welcome custom agreements with our AIRE team. This option allows flexibility in collaborating with us to ensure your project's needs are met effectively.*
-
-*To explore this option, please contact our demonstration projects service manager via katre.eljas@taltech.ee with the subject line "Demonstration Project Custom Agreement Request - [Your Project Name]." In your email, briefly describe your project and your specific documentation or collaboration needs. Our team will promptly respond to initiate a conversation about tailoring a solution that aligns with your project goals.*
+Ongoing collaboration with the company in developing and refining the algorithms significantly improved the outcome. Throughout the project, the team gained a much deeper understanding of the physics behind building energy usage, which in turn revealed new opportunities for achieving greater energy savings. This enhanced insight allowed for more informed decision-making and the development of a more efficient and intelligent control solution.
