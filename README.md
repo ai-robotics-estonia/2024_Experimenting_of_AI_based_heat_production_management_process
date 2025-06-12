@@ -1,4 +1,4 @@
-# Development of an artificial intelligence-based heat production control process
+# Validating of an artificial intelligence-based heat production control process
 
 
 ## Summary
@@ -11,7 +11,7 @@
 
 # Description
 ## Objectives of the Demonstration Project
-The aim of the project was to develop an intelligent heat storage system designed for private homes and small consumers, which would allow the building owner to use several methods for heating (electric heating, heat pump, solid fuel boiler) by choosing the appropriate method and time. These functions can also be used alternately and in combination. The given solution can later be scaled for small-scale production along with imported heat pumps. The goal was to create an energy-efficient integrated heat storage system. Currently, a similar solution is completely absent from our market.
+The aim of the project was to validate an intelligent heat storage system designed for private homes and small consumers, which would allow the building owner to use several methods for heating (electric heating, heat pump, solid fuel boiler) by choosing the appropriate method and time. These functions can also be used alternately and in combination. The given solution can later be scaled for small-scale production along with imported heat pumps. The goal was to create an energy-efficient integrated heat storage system. Currently, a similar solution is completely absent from our market.
 
 ## Activities and Results of the Demonstration Project
 ### Challenge
@@ -79,4 +79,4 @@ The end user sees the heating demand (the result of the prediction) directly on 
 The sample solution is educational in many ways across different fields, as similar approaches can be used to control various heating systems and energy production solutions, as well as to utilize surplus energy (which may not be practical to sell) or to use electric heating alongside conventional heating (when it is more cost-effective at a given time). The software solution can be reused in multiple scenarios, as the entire heating technology sector is moving toward increasingly optimized solutions. This presents a great opportunity to create cost-effective energy storage systems (using thermal storage) and to develop control solutions based on industrial controllers.
 
 ### Lessons Learned
-Ongoing collaboration with the company in developing and refining the algorithms significantly improved the outcome. Throughout the project, the team gained a much deeper understanding of the physics behind building energy usage, which in turn revealed new opportunities for achieving greater energy savings. This enhanced insight allowed for more informed decision-making and the development of a more efficient and intelligent control solution.
+Ongoing collaboration with the company in refining and validating the algorithms significantly improved the outcome. Throughout the project, the team gained a much deeper understanding of the physics behind building energy usage, which in turn revealed new opportunities for achieving greater energy savings. This enhanced insight allowed for more informed decision-making and making the control system more efficient and intelligent.
